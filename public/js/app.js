@@ -2501,8 +2501,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     row: {
@@ -2525,6 +2523,17 @@ __webpack_require__.r(__webpack_exports__);
           id: this.row.id
         }
       });
+    },
+    destroy: function destroy() {
+      var _this = this;
+
+      if (window.confirm('Are you sure you want to delete this?')) {
+        var resource = this.$route.name.substring(0, this.$route.name.length - 1);
+        axios["delete"]("/".concat(resource, "/").concat(this.row.id)).then(function () {
+          // this.$emit('destroyed', this.row)
+          _this.$router.go();
+        });
+      }
     }
   }
 });
@@ -39121,15 +39130,8 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      {
-        staticClass: "btn btn-danger",
-        on: {
-          click: function($event) {
-            return _vm.$emit("destroy", _vm.row)
-          }
-        }
-      },
-      [_vm._v("\n    Delete\n  ")]
+      { staticClass: "btn btn-danger", on: { click: _vm.destroy } },
+      [_vm._v("Delete")]
     )
   ])
 }
