@@ -1,8 +1,5 @@
 <?php
 
-use App\Address;
-use App\Car;
-use App\Owner;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +30,9 @@ Route::get('car/{car}', 'CarController@show');
 Route::post('car', 'CarController@store');
 Route::put('car/{car}', 'CarController@update');
 Route::delete('car/{car}', 'CarController@delete');
+
+Route::get('averages/owners', 'AverageController@owners');
+Route::get('averages/addresses', 'AverageController@addresses');
 
 Route::get('{any}', function () {
     return view('layouts.app');

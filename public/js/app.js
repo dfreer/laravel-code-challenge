@@ -1920,6 +1920,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2035,6 +2041,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ResourceCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResourceCard.vue */ "./resources/js/components/ResourceCard.vue");
 //
 //
 //
@@ -2051,7 +2058,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ResourceCard: _ResourceCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
 
 /***/ }),
 
@@ -2260,6 +2277,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2374,6 +2397,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ResourceCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResourceCard.vue */ "./resources/js/components/ResourceCard.vue");
 //
 //
 //
@@ -2390,7 +2414,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ResourceCard: _ResourceCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
 
 /***/ }),
 
@@ -2404,6 +2440,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ResourceCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResourceCard.vue */ "./resources/js/components/ResourceCard.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2438,12 +2480,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -38553,29 +38589,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("ResourceCard", {
-    attrs: { endpoint: _vm.endpoint },
-    scopedSlots: _vm._u([
-      {
-        key: "title",
-        fn: function(ref) {
-          var data = ref.data
-          return [
-            data
-              ? _c("span", [_vm._v("Address #" + _vm._s(data.id))])
-              : _vm._e()
-          ]
-        }
-      },
-      {
-        key: "default",
-        fn: function(ref) {
-          var data = ref.data
-          return [data ? _c("pre", [_vm._v(_vm._s(data))]) : _vm._e()]
-        }
-      }
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _c("ResourceCard", {
+            attrs: { endpoint: _vm.endpoint },
+            scopedSlots: _vm._u([
+              {
+                key: "title",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [
+                    data
+                      ? _c("span", [_vm._v("Address #" + _vm._s(data.id))])
+                      : _vm._e()
+                  ]
+                }
+              },
+              {
+                key: "default",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [data ? _c("pre", [_vm._v(_vm._s(data))]) : _vm._e()]
+                }
+              }
+            ])
+          })
+        ],
+        1
+      )
     ])
-  })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38650,18 +38697,45 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Addresses")]),
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _c("ResourceCard", {
+            staticClass: "mb-4",
+            attrs: { endpoint: "/averages/addresses" },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [
+                    data
+                      ? _c("p", [
+                          _vm._v(
+                            "Average # cars per address: " + _vm._s(data.cars)
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                }
+              }
+            ])
+          }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [_c("address-table-component")],
-            1
-          )
-        ])
-      ])
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [_vm._v("Addresses")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [_c("address-table-component")],
+              1
+            )
+          ])
+        ],
+        1
+      )
     ])
   ])
 }
@@ -38899,29 +38973,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("ResourceCard", {
-    attrs: { endpoint: _vm.endpoint },
-    scopedSlots: _vm._u([
-      {
-        key: "title",
-        fn: function(ref) {
-          var data = ref.data
-          return [
-            data
-              ? _c("span", [_vm._v(_vm._s(data.make + " " + data.model))])
-              : _vm._e()
-          ]
-        }
-      },
-      {
-        key: "default",
-        fn: function(ref) {
-          var data = ref.data
-          return [data ? _c("pre", [_vm._v(_vm._s(data))]) : _vm._e()]
-        }
-      }
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _c("ResourceCard", {
+            attrs: { endpoint: _vm.endpoint },
+            scopedSlots: _vm._u([
+              {
+                key: "title",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [
+                    data
+                      ? _c("span", [
+                          _vm._v(_vm._s(data.make + " " + data.model))
+                        ])
+                      : _vm._e()
+                  ]
+                }
+              },
+              {
+                key: "default",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [data ? _c("pre", [_vm._v(_vm._s(data))]) : _vm._e()]
+                }
+              }
+            ])
+          })
+        ],
+        1
+      )
     ])
-  })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38996,18 +39083,54 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Owners")]),
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _c("ResourceCard", {
+            staticClass: "mb-4",
+            attrs: { endpoint: "/averages/owners" },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [
+                    data
+                      ? [
+                          _c("p", [
+                            _vm._v(
+                              "Average # cars per owner: " + _vm._s(data.cars)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "Average # addresses per owner: " +
+                                _vm._s(data.addresses)
+                            )
+                          ])
+                        ]
+                      : _vm._e()
+                  ]
+                }
+              }
+            ])
+          }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [_c("owner-table-component")],
-            1
-          )
-        ])
-      ])
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [_vm._v("Owners")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [_c("owner-table-component")],
+              1
+            )
+          ])
+        ],
+        1
+      )
     ])
   ])
 }
@@ -39033,25 +39156,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("ResourceCard", {
-    attrs: { endpoint: _vm.endpoint },
-    scopedSlots: _vm._u([
-      {
-        key: "title",
-        fn: function(ref) {
-          var data = ref.data
-          return [data ? _c("span", [_vm._v(_vm._s(data.name))]) : _vm._e()]
-        }
-      },
-      {
-        key: "default",
-        fn: function(ref) {
-          var data = ref.data
-          return [data ? _c("pre", [_vm._v(_vm._s(data))]) : _vm._e()]
-        }
-      }
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-12" },
+        [
+          _c("ResourceCard", {
+            attrs: { endpoint: _vm.endpoint },
+            scopedSlots: _vm._u([
+              {
+                key: "title",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [
+                    data ? _c("span", [_vm._v(_vm._s(data.name))]) : _vm._e()
+                  ]
+                }
+              },
+              {
+                key: "default",
+                fn: function(ref) {
+                  var data = ref.data
+                  return [data ? _c("pre", [_vm._v(_vm._s(data))]) : _vm._e()]
+                }
+              }
+            ])
+          })
+        ],
+        1
+      )
     ])
-  })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39075,26 +39211,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c(
-            "div",
-            { staticClass: "card-header" },
-            [_vm._t("title", null, { data: _vm.data })],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [_vm._t("default", null, { data: _vm.data })],
-            2
-          )
-        ])
-      ])
-    ])
+  return _c("div", { staticClass: "card" }, [
+    _c(
+      "div",
+      { staticClass: "card-header" },
+      [_vm._t("title", null, { data: _vm.data })],
+      2
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [_vm._t("default", null, { data: _vm.data })],
+      2
+    )
   ])
 }
 var staticRenderFns = []
@@ -56113,15 +56243,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/ResourceCard.vue ***!
   \**************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ResourceCard_vue_vue_type_template_id_00e3bdae___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResourceCard.vue?vue&type=template&id=00e3bdae& */ "./resources/js/components/ResourceCard.vue?vue&type=template&id=00e3bdae&");
 /* harmony import */ var _ResourceCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResourceCard.vue?vue&type=script&lang=js& */ "./resources/js/components/ResourceCard.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ResourceCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ResourceCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -56151,7 +56280,7 @@ component.options.__file = "resources/js/components/ResourceCard.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/components/ResourceCard.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
