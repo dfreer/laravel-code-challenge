@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Car;
-use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Exception;
+use App\Car;
 
 class CarController extends Controller
 {
@@ -16,7 +16,13 @@ class CarController extends Controller
      */
     public function index(): array
     {
-        return Car::all()->toArray();
+        return Car::with('owner', 'address')
+            ->get()
+            ->map(function ($car) {
+                $car->owner->append('name');
+                return $car;
+            })
+            ->toArray();
     }
 
     /**

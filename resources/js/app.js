@@ -4,22 +4,23 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-import App from './components/App.vue';
-import VueRouter from 'vue-router';
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-import {routes} from './routes';
+import App from './components/App.vue'
+import VueRouter from 'vue-router'
+import VueAxios from 'vue-axios'
+import axios from 'axios'
+import { routes } from './routes'
 
-Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
+Vue.use(VueRouter)
+Vue.use(VueAxios, axios)
 
-import 'vuejs-datatable/dist/themes/bootstrap-4.esm';
-import {VuejsDatatableFactory} from 'vuejs-datatable';
-Vue.use(VuejsDatatableFactory);
+import 'vuejs-datatable/dist/themes/bootstrap-4.esm'
+import { VuejsDatatableFactory } from 'vuejs-datatable'
+import Vue from 'vue'
+Vue.use(VuejsDatatableFactory)
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,8 +30,16 @@ Vue.use(VuejsDatatableFactory);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-const files = require.context('./', true, /\.vue$/i);
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map((key) =>
+  Vue.component(
+    key
+      .split('/')
+      .pop()
+      .split('.')[0],
+    files(key).default
+  )
+)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39,12 +48,24 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  */
 
 const router = new VueRouter({
-    mode: 'history',
-    routes: routes
-});
+  mode: 'history',
+  routes: routes,
+})
+
+Vue.prototype.$formatAddress = (address) => {
+  return (
+    address.address +
+    '<br>' +
+    address.city +
+    '<br>' +
+    address.country +
+    '<br>' +
+    address.postal_code
+  )
+}
 
 const app = new Vue({
-    el: '#app',
-    router: router,
-    render: h => h(App)
-});
+  el: '#app',
+  router: router,
+  render: (h) => h(App),
+})

@@ -1922,22 +1922,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
+    var _this = this;
+
     return {
       columns: [{
         label: 'ID',
         field: 'id',
         align: 'center'
       }, {
+        label: 'Owner',
+        field: 'owner.name',
+        headerAlign: 'left',
+        align: 'left'
+      }, {
+        label: '# Cars',
+        field: 'cars_count',
+        headerAlign: 'left',
+        align: 'left'
+      }, {
         label: 'Address',
         field: 'address',
         headerAlign: 'left',
         align: 'left',
         interpolate: true,
-        representedAs: function representedAs(r) {
-          return r.address + '<br>' + r.city + '<br>' + r.country + '<br>' + r.postal_code;
+        representedAs: function representedAs(address) {
+          return _this.$formatAddress(address);
         }
       }, {
         label: 'Actions',
@@ -1957,7 +1978,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.get('/address').then(function (res) {
         this.rows = res.data.map(function (o) {
           return _objectSpread(_objectSpread({}, o), {}, {
-            'type': 'address'
+            type: 'address'
           });
         });
       }.bind(this));
@@ -2074,14 +2095,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
+    var _this = this;
+
     return {
       columns: [{
         label: 'ID',
         field: 'id',
         align: 'center'
+      }, {
+        label: 'Owner',
+        field: 'owner.name',
+        headerAlign: 'left',
+        align: 'left'
+      }, {
+        label: 'Address',
+        field: 'address',
+        headerAlign: 'left',
+        align: 'left',
+        interpolate: true,
+        representedAs: function representedAs(_ref) {
+          var address = _ref.address;
+          return _this.$formatAddress(address);
+        }
       }, {
         label: 'Make',
         field: 'make',
@@ -2115,7 +2162,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.get('/car').then(function (res) {
         this.rows = res.data.map(function (o) {
           return _objectSpread(_objectSpread({}, o), {}, {
-            'type': 'car'
+            type: 'car'
           });
         });
       }.bind(this));
@@ -54901,6 +54948,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var vuejs_datatable_dist_themes_bootstrap_4_esm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuejs-datatable/dist/themes/bootstrap-4.esm */ "./node_modules/vuejs-datatable/dist/themes/bootstrap-4.esm.js");
 /* harmony import */ var vuejs_datatable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuejs-datatable */ "./node_modules/vuejs-datatable/dist/vuejs-datatable.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_7__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -54914,11 +54963,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_2__["default"], axios__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_7___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_7___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_2__["default"], axios__WEBPACK_IMPORTED_MODULE_3___default.a);
 
 
-Vue.use(vuejs_datatable__WEBPACK_IMPORTED_MODULE_6__["VuejsDatatableFactory"]);
+
+vue__WEBPACK_IMPORTED_MODULE_7___default.a.use(vuejs_datatable__WEBPACK_IMPORTED_MODULE_6__["VuejsDatatableFactory"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -54930,7 +54980,7 @@ Vue.use(vuejs_datatable__WEBPACK_IMPORTED_MODULE_6__["VuejsDatatableFactory"]);
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 
 files.keys().map(function (key) {
-  return Vue.component(key.split('/').pop().split('.')[0], files(key)["default"]);
+  return vue__WEBPACK_IMPORTED_MODULE_7___default.a.component(key.split('/').pop().split('.')[0], files(key)["default"]);
 });
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -54942,7 +54992,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_4__["routes"]
 });
-var app = new Vue({
+
+vue__WEBPACK_IMPORTED_MODULE_7___default.a.prototype.$formatAddress = function (address) {
+  return address.address + '<br>' + address.city + '<br>' + address.country + '<br>' + address.postal_code;
+};
+
+var app = new vue__WEBPACK_IMPORTED_MODULE_7___default.a({
   el: '#app',
   router: router,
   render: function render(h) {

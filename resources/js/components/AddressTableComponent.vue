@@ -44,16 +44,8 @@ export default {
           headerAlign: 'left',
           align: 'left',
           interpolate: true,
-          representedAs: function(r) {
-            return (
-              r.address +
-              '<br>' +
-              r.city +
-              '<br>' +
-              r.country +
-              '<br>' +
-              r.postal_code
-            )
+          representedAs: (address) => {
+            return this.$formatAddress(address)
           },
         },
         {
