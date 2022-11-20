@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Owner;
-use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Exception;
+use App\Owner;
 
 class OwnerController extends Controller
 {
@@ -16,7 +16,7 @@ class OwnerController extends Controller
      */
     public function index(): array
     {
-        return Owner::all()->toArray();
+        return Owner::withCount('cars', 'addresses')->get()->toArray();
     }
 
     /**
