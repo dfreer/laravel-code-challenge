@@ -27,7 +27,7 @@ class OwnerController extends Controller
      */
     public function show(Owner $owner): Owner
     {
-        return $owner;
+        return $owner->load('addresses', 'cars');
     }
 
     /**

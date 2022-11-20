@@ -19,10 +19,6 @@ class AddressController extends Controller
         return Address::with('owner')
             ->withCount('cars')
             ->get()
-            ->map(function ($address) {
-                $address->owner->append('name');
-                return $address;
-            })
             ->toArray();
     }
 
@@ -34,7 +30,7 @@ class AddressController extends Controller
      */
     public function show(Address $address): Address
     {
-        return $address;
+        return $address->load('owner', 'cars');
     }
 
     /**

@@ -18,10 +18,6 @@ class CarController extends Controller
     {
         return Car::with('owner', 'address')
             ->get()
-            ->map(function ($car) {
-                $car->owner->append('name');
-                return $car;
-            })
             ->toArray();
     }
 
@@ -33,7 +29,7 @@ class CarController extends Controller
      */
     public function show(Car $car): Car
     {
-        return $car;
+        return $car->load('owner', 'address');
     }
 
     /**

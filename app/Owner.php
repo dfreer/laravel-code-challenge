@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Owner extends Model
 {
+    protected $appends = ['name'];
+
     /**
      * Concat first and last name to return full name
      *
