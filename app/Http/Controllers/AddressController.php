@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Address;
-use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Exception;
+use App\Address;
 
 class AddressController extends Controller
 {
@@ -16,7 +16,14 @@ class AddressController extends Controller
      */
     public function index(): array
     {
-        return Address::all()->toArray();
+        return Address::with('owner')
+            ->withCount('cars')
+            ->get()
+            ->map(function ($address) {
+                $address->owner->append('name');
+                return $address;
+            })
+            ->toArray();
     }
 
     /**
